@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketeasy/views/Login/Widgets/InputEmail.dart';
 class Login extends StatelessWidget {
   // const Login({required Key key}) : super(key: key);
 
@@ -16,8 +17,10 @@ class Login extends StatelessWidget {
         child: ListView(
           children: [
             Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('sdsd')
+                Text('sdsd'),
+                InputEmail()
               ],
             )
           ],
