@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketeasy/views/Products/ProductsPage.dart';
 
-import 'package:marketeasy/repositories/AuthRepository.dart';
+import 'package:marketeasy/repositories/auth_repository.dart';
 
 class LoginInputs extends StatelessWidget {
   // const LoginInputs({Key key}) : super(key: key);
@@ -10,20 +10,21 @@ class LoginInputs extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  void validateFields(String email, String password) async {
-    // if (await _authRepository.logar(email.trim(), password.trim())) {
-    //   Navigator.of(context).pushAndRemoveUntil(
-    //       MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
-    //           (Route<dynamic> route) => false);
-    // } else {
-    //   print('Deu Errado!');
-    // }
-  }
+
 
   @override
   Widget build(BuildContext context) {
 
-
+    void validateFields(String email, String password) async {
+      if (await _authRepository.login(email.trim(), password.trim())) {
+        // Navigator.of(context).pushAndRemoveUntil(
+        //     MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
+        //         (Route<dynamic> route) => false);
+        print('certo');
+      } else {
+        print('Deu Errado!');
+      }
+    }
 
     return Container(
       width:MediaQuery.of(context).size.width * 0.9 ,
@@ -72,7 +73,7 @@ class LoginInputs extends StatelessWidget {
                     TextStyle(fontSize: 20, color: Color(0xFFFFFFFF))),
               ),
               onPressed: () {
-                // validarCampos(emailController.text, senhaController.text);
+                validateFields(emailController.text, passwordController.text);
               },
               child: const Text('Entrar'),
             ),
