@@ -7,7 +7,7 @@ class LoginInputs extends StatelessWidget {
   // const LoginInputs({Key key}) : super(key: key);
   AuthRepository _authRepository  = AuthRepository();
 
-  TextEditingController emailController = TextEditingController();
+  TextEditingController userController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
 
@@ -15,8 +15,8 @@ class LoginInputs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    void validateFields(String email, String password) async {
-      if (await _authRepository.login(email.trim(), password.trim())) {
+    void validateFields(String user, String password) async {
+      if (await _authRepository.login(user.trim(), password.trim())) {
         // Navigator.of(context).pushAndRemoveUntil(
         //     MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
         //         (Route<dynamic> route) => false);
@@ -38,7 +38,7 @@ class LoginInputs extends StatelessWidget {
               color: Colors.black,
             ),
             decoration: InputDecoration(
-                labelText: 'Email',
+                labelText: 'Usuário',
                 labelStyle: TextStyle(
                     color: Colors.black54
                 )
@@ -73,7 +73,7 @@ class LoginInputs extends StatelessWidget {
                     TextStyle(fontSize: 20, color: Color(0xFFFFFFFF))),
               ),
               onPressed: () {
-                validateFields(emailController.text, passwordController.text);
+                validateFields(userController.text, passwordController.text);
               },
               child: const Text('Entrar'),
             ),
