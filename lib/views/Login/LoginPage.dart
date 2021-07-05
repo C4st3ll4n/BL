@@ -12,21 +12,10 @@ class Login extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [Colors.redAccent, Colors.white]
+            colors: [Colors.blueAccent, Colors.white]
           ),
         ),
         child:
-        // ListView(
-        //   children: [
-        //     Column(
-        //       // mainAxisAlignment: MainAxisAlignment.center,
-        //       children: [
-        //         Text('sdsd'),
-        //         InputEmail()
-        //       ],
-        //     )
-        //   ],
-        // ),
        SafeArea(
       child: Center(
       child: SingleChildScrollView(

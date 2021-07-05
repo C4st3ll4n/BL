@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketeasy/views/Login/LoginView.dart';
+import 'package:marketeasy/views/Login/LoginPage.dart';
 import 'package:provider/provider.dart';
 
 void main(){

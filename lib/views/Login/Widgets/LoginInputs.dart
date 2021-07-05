@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:marketeasy/views/Products/ProductsPage.dart';
+
+import 'package:marketeasy/repositories/AuthRepository.dart';
+
 class LoginInputs extends StatelessWidget {
   // const LoginInputs({Key key}) : super(key: key);
+  AuthRepository _authRepository  = AuthRepository();
+
   TextEditingController emailController = TextEditingController();
-  TextEditingController senhaController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void validateFields(String email, String password) async {
+    // if (await _authRepository.logar(email.trim(), password.trim())) {
+    //   Navigator.of(context).pushAndRemoveUntil(
+    //       MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
+    //           (Route<dynamic> route) => false);
+    // } else {
+    //   print('Deu Errado!');
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
+
 
 
     return Container(
@@ -16,14 +34,12 @@ class LoginInputs extends StatelessWidget {
         children: [
           TextFormField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
             decoration: InputDecoration(
-                border: InputBorder.none,
-                fillColor: Colors.blue,
-                labelText: 'teste',
+                labelText: 'Email',
                 labelStyle: TextStyle(
-                    color: Colors.white
+                    color: Colors.black54
                 )
             ),
           ),
@@ -32,14 +48,13 @@ class LoginInputs extends StatelessWidget {
           ),
           TextFormField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
+            obscureText: true,
             decoration: InputDecoration(
-                border: InputBorder.none,
-                fillColor: Colors.blue,
-                labelText: 'teste',
+                labelText: 'Senha',
                 labelStyle: TextStyle(
-                    color: Colors.white
+                    color: Colors.black54
                 )
             ),
           ),
