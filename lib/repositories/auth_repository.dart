@@ -10,8 +10,15 @@ class AuthRepository {
 
   Future login(String user, String password) async {
     var url = Uri.parse("http://servicosflex.rpinfo.com.br:9000/v1.1/auth");
+
+    final auth = jsonEncode({"usuario": "100000",
+      "senha": "123456"});
+
+
     var response = await http
-        .post(url, body: {"usuario": '$user', "senha": '$password'});
+        .post(url,
+    headers : {"Content-type": "application/json"}
+    , body: auth);
 
 
     if (response.statusCode == 200 ||response.statusCode == 200) {
