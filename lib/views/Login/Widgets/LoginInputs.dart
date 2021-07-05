@@ -16,6 +16,7 @@ class LoginInputs extends StatelessWidget {
   Widget build(BuildContext context) {
 
     void validateFields(String user, String password) async {
+      print(user + password);
       if (await _authRepository.login(user.trim(), password.trim())) {
         // Navigator.of(context).pushAndRemoveUntil(
         //     MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
@@ -34,6 +35,7 @@ class LoginInputs extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextFormField(
+            controller: userController,
             style: TextStyle(
               color: Colors.black,
             ),
@@ -48,6 +50,7 @@ class LoginInputs extends StatelessWidget {
             height: 20,
           ),
           TextFormField(
+            controller: passwordController,
             style: TextStyle(
               color: Colors.black,
             ),

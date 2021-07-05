@@ -11,21 +11,24 @@ class AuthRepository {
   Future login(String user, String password) async {
     var url = Uri.parse("http://servicosflex.rpinfo.com.br:9000/v1.1/auth");
     var response = await http
-        .post(url, body: {"usuario": user, "senha": password});
+        .post(url, body: {"usuario": '$user', "senha": '$password'});
 
 
     if (response.statusCode == 200 ||response.statusCode == 200) {
-      var json = jsonDecode(response.body);
-      ApiResponse apiResponse = ApiResponse.fromJson(json);
-
       print('botao entrar');
       print(response.body);
       print(response.statusCode);
+      var json = jsonDecode(response.body);
+      ApiResponse apiResponse = ApiResponse.fromJson(json);
+
+
 
 
       _secureStorage.write(key:"token",value: apiResponse.response.token);
 
       return true;
+    }else{
+
     }
     return false;
   }
