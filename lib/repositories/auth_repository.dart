@@ -3,10 +3,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:marketeasy/models/api_response.dart';
+import 'package:marketeasy/services/SecureStorage.dart';
 
 class AuthRepository {
 
-  final _secureStorage = FlutterSecureStorage();
+  final _secureStorage = SecureStorage.getInstance();
 
   Future login(String user, String password) async {
     var url = Uri.parse("http://servicosflex.rpinfo.com.br:9000/v1.1/auth");
@@ -22,16 +23,9 @@ class AuthRepository {
 
 
     if (response.statusCode == 200 ||response.statusCode == 200) {
-      print('botao entrar');
-      print(response.body);
-      print(response.statusCode);
       var json = jsonDecode(response.body);
       ApiResponse apiResponse = ApiResponse.fromJson(json);
-
-
-
-
-      _secureStorage.write(key:"token",value: apiResponse.response.token);
+      _secureStorage.writeData("token", apiResponse.response.token);
 
       return true;
     }else{

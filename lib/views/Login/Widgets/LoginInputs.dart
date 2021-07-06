@@ -16,11 +16,10 @@ class LoginInputs extends StatelessWidget {
   Widget build(BuildContext context) {
 
     void validateFields(String user, String password) async {
-      print(user + password);
       if (await _authRepository.login(user.trim(), password.trim())) {
-        // Navigator.of(context).pushAndRemoveUntil(
-        //     MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
-        //         (Route<dynamic> route) => false);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (BuildContext context) => ProductsPage()),
+                (Route<dynamic> route) => false);
         print('certo');
       } else {
         print('Deu Errado!');
